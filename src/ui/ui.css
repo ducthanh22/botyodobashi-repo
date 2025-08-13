@@ -1,0 +1,78 @@
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  float: left;
+}
+
+a {
+  display: block;
+  padding: 8px;
+  /* background-color: #0ed62c; */
+}
+
+li {
+  float: left;
+}
+li {
+  display: inline;
+}
+li a {
+  display: block;
+  color: rgb(32, 36, 1);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: bold;
+
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  color: #18af5e;
+}
+.active {
+  color: #af1818;
+}
+
+
+/* setting */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .form-group label {
+    width: 150px;
+    margin-right: 10px;
+  }
+
+  .form-group input {
+    flex: 1;
+    padding: 5px;
+  }
+
+  form {
+    max-width: 500px;
+    margin: auto;
+  }
+
+  input[type="submit"] {
+    margin-top: 10px;
+    padding: 8px 16px;
+  }
+
+
+
+  

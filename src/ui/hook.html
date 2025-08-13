@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bot Mua Hàng</title>
+  <link rel="stylesheet" href="ui.css" />
+  <style>
+/* Modal overlay */
+#loadingModal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+/* Spinner box */
+#loadingModal .spinner {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px; height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+/* Spin animation */
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+</style>
+
+</head>
+
+<body>
+ 
+ <!-- <h1>Cài đặt</h1> -->
+  <div class="container-fluid">
+    <ul>
+  <li><a href="ui_index.html">Trang Chính</a></li>
+  <li><a href="set_env.html">Cài Đặt</a></li>
+   <li><a class="active"  href="hook.html">Hook</a></li>
+</ul>
+  </div>
+<div >
+    <form id="hook-form">
+  <div class="form-group">
+    <label for="urlweb">Link sản phẩm:</label>
+    <input type="url" id="urlweb" name="urlweb"required>
+  </div>
+
+  <input type="submit" value="Lưu" style="background-color: rgb(116, 229, 141);color: rgb(163, 33, 33);border: none;">
+</form>
+<div id="loadingModal">
+  <div class="spinner"></div>
+</div>
+
+</div>
+<script src="../render/hookUser.js"></script>
+</body>
+</html>

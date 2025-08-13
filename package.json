@@ -1,0 +1,62 @@
+{
+  "name": "bot_yodobashi",
+  "version": "1.0.0",
+  "main": "src/electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.yodobashi.bot",
+    "productName": "YodobashiBot",
+    "files": [
+      "src/**/*",
+      "bot/**/*",
+      "ui/**/*",
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "chrome-mac",
+        "to": "chrome-mac",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "chrome-win",
+        "to": "chrome-win",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "asar": true,
+    "mac": {
+      "target": "dmg",
+      "icon": "icon/pngtree-a-robot-with-round-head-png-image_16287334.png"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "icon/pngtree-a-robot-with-round-head-png-image_16287334.png"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Yodobashi auto-buy bot with Electron UI",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "cheerio": "^1.1.2",
+    "firebase": "^12.0.0",
+    "puppeteer-core": "^24.10.2",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "user-agents": "^1.1.616"
+  },
+  "devDependencies": {
+    "electron": "^37.0.0",
+    "electron-builder": "^26.0.12"
+  }
+}
