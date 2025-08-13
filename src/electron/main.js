@@ -52,13 +52,17 @@ function decrypt(encryptedData) {
 }
 
 // 📂 Đường dẫn file config ẩn ngoài app
-const configPath = path.join(app.getPath('userData'), '.data');
+// const configPath = path.join(app.getPath('userData'), '.data');
+
+
 
 let mainWindow;
 
 // Đường dẫn Chrome tùy nền tảng
 let executablePath = '';
 const isDev = !app.isPackaged;
+const appDirectory = isDev ? __dirname : path.dirname(app.getPath('exe'));
+const configPath = path.join(appDirectory, '.data');
 
 if (os.platform() === 'win32') {
   executablePath = isDev
@@ -199,9 +203,9 @@ ipcMain.handle('run-bot', async () => {
     });
     currentBrowser = browser;
     const page = await browser.newPage();
-    // await page.setUserAgent(
-    //   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
-    // );
+    await page.setUserAgent(
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
+    );
 
     const userConfig  = await loadConfigInternally();
     // const ua = new UserAgent();

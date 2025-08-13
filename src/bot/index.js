@@ -145,7 +145,7 @@ async checkOrderCode() {
     if (match && match[1]) {
       const orderCode = match[1];
       await sendToDiscord(`🔔 Bot đã mua xong sản phẩm cho thiết bị: ${deviceID}\n✅ Mã đơn hàng: ${orderCode}`);
-      await sendUser(`https://www.yodobashi.com/\n❌ Đặt đơn thất bại`)
+      await sendUser(`https://www.yodobashi.com/\n🔔 Bot đã mua xong sản phẩm`)
       // console.log("✅ Mã đơn hàng:", orderCode);
       // console.log("✅ Xác nhận chốt đơn!");
       return orderCode;

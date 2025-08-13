@@ -38,7 +38,7 @@
       "icon": "icon/pngtree-a-robot-with-round-head-png-image_16287334.ico"
     },
     "win": {
-      "target": "nsis",
+      "target": "portable",
       "icon": "icon/pngtree-a-robot-with-round-head-png-image_16287334.ico"
     }
   },
