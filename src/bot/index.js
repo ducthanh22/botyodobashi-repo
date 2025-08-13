@@ -9,7 +9,7 @@ class Bot {
   async goToProductPage(productUrl) {
     try {
       await this.page.goto(productUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
-      console.log('✅ Đã vào trang sản phẩm');
+      // console.log('✅ Đã vào trang sản phẩm');
     } catch (err) {
       if (err.name === 'TimeoutError') {
         throw new Error('❌ Mạng chậm, vui lòng thử lại sau');
@@ -17,10 +17,10 @@ class Bot {
       throw err;
     }
   }
-  async addCart() {
+  async addCart(quantity) {
     try {
       await this.page.waitForSelector('#qtySel', { timeout: 8000 });
-      await this.page.select('#qtySel', '3');
+      await this.page.select('#qtySel', quantity);
     } catch (err){
      return { error: '❌ Sản phẩm hết hàng hoặc không chọn được số lượng' };
     }
@@ -35,7 +35,7 @@ class Bot {
           this.page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 60000 }),
           this.page.click(addToCartSelector),
         ]);
-        console.log("🛒 Đã click nút thêm vào giỏ hàng!");
+        // console.log("🛒 Đã click nút thêm vào giỏ hàng!");
         break;
       } catch (error) {
         if (error.name === 'TimeoutError') {
@@ -103,7 +103,7 @@ class Bot {
   }
 
   async addCode(bacode) {
-    console.log("➡️ Đã vào trang thanh toán");
+    // console.log("➡️ Đã vào trang thanh toán");
     const inputSelector = 'input[name="creditCard.securityCode"]';
     const confirmSelector = 'a.btnRed';
     const canInsertCode = await this.page.waitForSelector(inputSelector, { timeout: 600000 }).catch(() => null);
@@ -119,7 +119,7 @@ class Bot {
           this.page.click(confirmSelector),
           this.page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 60000 })
         ]);
-        console.log("✅ đã nhập mã thẻ thành công!");
+        // console.log("✅ đã nhập mã thẻ thành công!");
       } catch (err) {
         if (err.name === 'TimeoutError') {
           throw new Error("❌ Mạng chậm khi xác nhận đơn.");
@@ -145,16 +145,18 @@ async checkOrderCode() {
     if (match && match[1]) {
       const orderCode = match[1];
       await sendToDiscord(`🔔 Bot đã mua xong sản phẩm cho thiết bị: ${deviceID}\n✅ Mã đơn hàng: ${orderCode}`);
-      console.log("✅ Mã đơn hàng:", orderCode);
-      console.log("✅ Xác nhận chốt đơn!");
+      await sendUser(`https://www.yodobashi.com/\n❌ Đặt đơn thất bại`)
+      // console.log("✅ Mã đơn hàng:", orderCode);
+      // console.log("✅ Xác nhận chốt đơn!");
       return orderCode;
     } else {
-      console.warn("⚠️ Không tìm thấy mã đơn hàng.");
-      return null;
+         await sendUser(`https://www.yodobashi.com/\n❌ Đặt đơn thất bại`)
+      throw new Error("❌ Đặt hàng thất bại");
     }
     }
   } catch (err) {
-    throw new Error("❌ Lỗi khi lấy mã đơn hàng: " + err.message);
+      await sendUser(`https://www.yodobashi.com/\n❌ Đặt đơn thất bại`)
+    throw new Error("❌ Đặt hàng thất bại");
     // console.error("❌ Lỗi khi lấy mã đơn hàng:", err);
     // return null;
   }

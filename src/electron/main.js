@@ -28,6 +28,7 @@ const defaultConfig = {
   USER_PASSWORD: '',
   PRODUCT_URL: '',
   RUN_AT: '',
+  QUANTITY:'',
   credit_Code: '',
   passWord: '',
   code_Confirm: '',
@@ -183,7 +184,7 @@ ipcMain.handle('run-bot', async () => {
       throw new Error('Thiếu thời gian chạy RUN_AT.');
 
     browser = await puppeteer.launch({
-      headless: false,
+      headless: 'new',
       executablePath,
       args: [
         '--no-sandbox',
@@ -198,9 +199,11 @@ ipcMain.handle('run-bot', async () => {
     });
     currentBrowser = browser;
     const page = await browser.newPage();
-    await page.setUserAgent(
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
-    );
+    // await page.setUserAgent(
+    //   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
+    // );
+
+    const userConfig  = await loadConfigInternally();
     // const ua = new UserAgent();
     // console.log('ua',ua.userAgent)
       // await page.setUserAgent(ua.userAgent);
@@ -226,7 +229,7 @@ ipcMain.handle('run-bot', async () => {
     await wait.afterLogin(config.RUN_AT);
 
     await purchase.goToProductPage(config.PRODUCT_URL);
-    await purchase.addCart();
+    await purchase.addCart(userConfig.QUANTITY);
     await purchase.addCode(config.code_Confirm);
     await purchase.checkOrderCode();
 

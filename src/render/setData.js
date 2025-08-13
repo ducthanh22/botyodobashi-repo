@@ -21,6 +21,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('username').value = config.USER_NAME || '';
     document.getElementById('password').value = config.USER_PASSWORD || '';
     document.getElementById('productUrl').value = config.PRODUCT_URL || '';
+    document.getElementById('quantity').value = config.QUANTITY || '';
     document.getElementById('urlhook').value = config.url_hook || '';
     document.getElementById('time').value = config.RUN_AT || '';
     document.getElementById('credit_Code').value = config.credit_Code || '';
@@ -36,6 +37,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         url_hook: document.getElementById('urlhook').value,
         USER_NAME: document.getElementById('username').value,
         USER_PASSWORD: document.getElementById('password').value,
+        QUANTITY: document.getElementById('quantity').value,
+
         RUN_AT: document.getElementById('time').value,
         credit_Code: document.getElementById('credit_Code').value,
         passWord: document.getElementById('password_Credit').value,

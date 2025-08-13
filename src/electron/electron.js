@@ -21,6 +21,7 @@ const defaultConfig = {
   USER_PASSWORD: '',
   PRODUCT_URL: '',
   RUN_AT: '',
+  QUANTITY:'',
   credit_Code: '',
   passWord: '',
   code_Confirm: '',
