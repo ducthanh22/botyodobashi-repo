@@ -35,11 +35,11 @@
     "asar": true,
     "mac": {
       "target": "dmg",
-      "icon": "icon/pngtree-a-robot-with-round-head-png-image_16287334.png"
+      "icon": "icon/pngtree-a-robot-with-round-head-png-image_16287334.ico"
     },
     "win": {
       "target": "nsis",
-      "icon": "icon/pngtree-a-robot-with-round-head-png-image_16287334.png"
+      "icon": "icon/pngtree-a-robot-with-round-head-png-image_16287334.ico"
     }
   },
   "keywords": [],
