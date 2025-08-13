@@ -10,36 +10,46 @@
   "build": {
     "appId": "com.yodobashi.bot",
     "productName": "YodobashiBot",
+    "directories": {
+      "output": "dist"
+    },
     "files": [
       "src/**/*",
       "bot/**/*",
       "ui/**/*",
-      "node_modules/**/*"
+      "node_modules/**/*",
+      "!**/*.map",
+      "!**/*.ts",
+      "!**/*.md",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}"
     ],
     "extraResources": [
       {
         "from": "chrome-mac",
         "to": "chrome-mac",
-        "filter": [
-          "**/*"
-        ]
+        "filter": ["**/*"]
       },
       {
         "from": "chrome-win",
         "to": "chrome-win",
-        "filter": [
-          "**/*"
-        ]
+        "filter": ["**/*"]
       }
     ],
     "asar": true,
     "mac": {
       "target": "dmg",
-      "icon": "icon/pngtree-a-robot-with-round-head-png-image_16287334.png"
+      "icon": "icon/icon.icns"
     },
     "win": {
       "target": "nsis",
-      "icon": "icon/pngtree-a-robot-with-round-head-png-image_16287334.png"
+      "icon": "icon/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "YodobashiBot"
     }
   },
   "keywords": [],
